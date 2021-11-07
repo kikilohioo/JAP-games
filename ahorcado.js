@@ -1,4 +1,4 @@
-let itemsahorcado = ["Buscando a Nemo", "Hipnotico", "Shrek", "Juego de gemelas", "Harry Potter", "Spiderman", "Advengers","Hitman","Halloween","Rapido y Furioso"];
+let itemsahorcado = ["Buscando a Nemo", "Hipnotico", "Shrek", "Juego de gemelas", "Harry Potter", "Spiderman", "Avengers","Hitman","Halloween","Rapido y Furioso"];
 let containerpalabra = document.getElementById("palabra-ahorcado");
 let filmtoarray = Array.from(itemsahorcado[Math.floor(Math.random() * 9)].toLowerCase());
 
