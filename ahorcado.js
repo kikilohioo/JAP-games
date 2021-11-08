@@ -22,11 +22,12 @@ inputmatch.addEventListener("keyup", function(event) {
   }
 });
 
+let imgahorcado = 0;
+
 function comprobarLetra(){
     let chartomatch = document.getElementById("chartomatch").value.toLowerCase();
     let failcontainer = document.getElementById("fail-container");
     let inputschars = document.getElementsByClassName("inpchar");
-    let imgahorcado = document.getElementById("imgahorcado").dataset.ahorcadoImg;
     let inputscharsshowed = 0;
 
     if(chartomatch != ""){
@@ -60,8 +61,14 @@ function comprobarLetra(){
         }else{
             failcontainer.innerHTML += `<span class="mx-2">${chartomatch}</span>`
             imgahorcado++;
-            document.getElementById("img-container").innerHTML =
-            `<img src="media/ahorcado/img${imgahorcado}.jpg" data-ahorcado-img="${imgahorcado}" id="imgahorcado" width="150" alt="ahorcado1">`;
+            let imgsahoracado = document.getElementsByClassName("imgahorcado");
+            for(let imgelement of imgsahoracado){
+                if(imgelement.id == "imgahorcado"+imgahorcado){
+                    imgelement.classList.remove("d-none");
+                }else{
+                    imgelement.classList.add("d-none");
+                }
+            }            
             if(imgahorcado == 6){
                 document.getElementById("btnmatch").disabled = true;
                 inputmatch.disabled = true;
@@ -78,6 +85,7 @@ function comprobarLetra(){
                 </div>
                 <button class="btn btn-success" onclick="location.reload()">Volver a Intentarlo</button>`;
             }
+            inputmatch.value = "";
         }
     }else{
         document.getElementById("alert-container").innerHTML =
