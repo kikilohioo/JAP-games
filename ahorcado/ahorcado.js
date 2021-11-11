@@ -49,6 +49,44 @@ function comprobarLetra(){
                 for(let charinput of inputschars){
                     charinput.style.backgroundColor = "rgb(153, 233, 151)";
                 }
+                if(window.localStorage.getItem("puntuaciones") != undefined){
+
+                    let puntuaciones = JSON.parse(window.localStorage.getItem("puntuaciones"));
+                    let puntExist = false;
+                    for(let puntuacion of puntuaciones){
+                        if(puntuacion.user == window.localStorage.getItem("session_init")){
+                            puntExist = true;
+                            puntuacion.juegos.ahorcado += 1;
+                            window.localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
+                        }
+                    }
+                    if(puntExist == false){
+                        let newPuntuacion = 
+                        {
+                            user: `${window.localStorage.getItem("session_init")}`,
+                            juegos: {
+                                ahorcado: 1,
+                                findnum: 0,
+                                rps: 0
+                            }
+                        };
+                        puntuaciones.push(newPuntuacion);
+                        window.localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
+                    }
+                }else{
+                    let puntuaciones = 
+                    [
+                        {
+                            user: `${window.localStorage.getItem("session_init")}`,
+                            juegos: {
+                                ahorcado: 1,
+                                findnum: 0,
+                                rps: 0
+                            }
+                        }
+                    ];
+                    window.localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
+                }
                 document.getElementById("alert-container").innerHTML =
                 `<div class="alert alert-success d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
