@@ -87,6 +87,7 @@ function comprobarLetra(){
                     ];
                     window.localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
                 }
+                document.getElementById("puntuacion").innerHTML = JSON.parse(window.localStorage.getItem("puntuaciones")).juegos.ahorcado;
                 document.getElementById("alert-container").innerHTML =
                 `<div class="alert alert-success d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
