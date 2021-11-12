@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', function(e){
             containerpalabra.innerHTML += `<br><br>`
         }
     }
+    if(window.localStorage.getItem("puntuaciones") != undefined){
+         let puntuaciones = JSON.parse(window.localStorage.getItem("puntuaciones"));
+         let puntExist = false;
+         for(let puntuacion of puntuaciones){
+             if(puntuacion.user == window.localStorage.getItem("session_init")){
+                 document.getElementById("puntuacion").innerHTML = puntuacion.juegos.ahorcado;
+              }else{
+                  document.getElementById("puntuacion").innerHTML = "0";
+              }
+         }
+    }
 });
 
 let inputmatch = document.getElementById("chartomatch");
