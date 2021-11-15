@@ -43,6 +43,14 @@
                 </div>
                 <div class="card-body">
                     <input type="number" style="width: 50px;" name="nummatch" id="nummatch">
+                    <script>
+                        document.getElementById("nummatch").addEventListener("keyup", function(event) {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            document.getElementById("btn-match").click();
+                        }
+                        });
+                    </script>
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-success" onclick="tryMatchNumbers()" id="btn-match">Probar Número</button>
