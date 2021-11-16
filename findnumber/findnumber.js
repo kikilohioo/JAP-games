@@ -6,13 +6,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
     numberToMatchContainer.innerHTML = numberToMatch;
     if (window.localStorage.getItem("puntuaciones") != undefined) {
         let puntuaciones = JSON.parse(window.localStorage.getItem("puntuaciones"));
-        let puntExist = false;
+        let puntExist = { exist: false, index: 0 };
         for (let puntuacion of puntuaciones) {
             if (puntuacion.user == window.localStorage.getItem("session_init")) {
-                document.getElementById("puntuacion").innerHTML = puntuacion.juegos.findnum;
-            } else {
-                document.getElementById("puntuacion").innerHTML = "0";
+                puntExist.exist = true;
+                puntExist.index = puntuaciones.indexOf(puntuacion);
             }
+        }
+        if (puntExist) {
+            document.getElementById("puntuacion").innerHTML = puntuaciones[puntExist.index].juegos.rps;
+        } else {
+            document.getElementById("puntuacion").innerHTML = "0";
         }
     }
 });
