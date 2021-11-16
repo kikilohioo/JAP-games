@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (puntExist) {
             document.getElementById("puntuacion").innerHTML = puntuaciones[puntExist.index].juegos.rps;
         } else {
-
+            document.getElementById("puntuacion").innerHTML = "0";
         }
     }
 });
